@@ -9,10 +9,10 @@ using UnityEngine.Networking;
 
 public class CMemManager : _MonoBehaviour
 {
+    public Text _infoText;
+
     public InputField _idInputField;
     public InputField _pwInputField;
-
-    public Text _infoText;
 
     private void Start()
     {
@@ -36,18 +36,18 @@ public class CMemManager : _MonoBehaviour
 
         if (www.error == null)
         {
-            Debug.Log("[RESPONSE][DATA]\n" + www.text);
+            Debug.LogWarning(this.GetMethodName() + "[RESPONSE][DATA]\n" + www.text);
         }
         else
         {
-            Debug.Log("[ERROR][MSG]\n" + www.error);
+            Debug.LogWarning("[ERROR][MSG]\n" + www.error);
         }
 
         Dictionary<string, object> responseData = MiniJSON.jsonDecode(www.text.Trim()) as Dictionary<string, object>;
-        Debug.LogWarning("[RESPONSE][DATA]\n" + responseData);
+        Debug.Log("[RESPONSE][DATA]\n" + responseData);
 
         string login_result = responseData["login_result"] as string;
-        Debug.Log("[RESPONSE][login_result]" + login_result);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][login_result]" + login_result);
 
         _infoText.text = login_result;
 
@@ -80,18 +80,18 @@ public class CMemManager : _MonoBehaviour
 
         if (www.error == null)
         {
-            Debug.Log("[RESPONSE][DATA]\n" + www.text);
+            Debug.LogWarning(this.GetMethodName() + "[RESPONSE][DATA]\n" + www.text);
         }
         else
         {
-            Debug.Log("[ERROR][MSG]\n" + www.error);
+            Debug.LogWarning("[ERROR][MSG]\n" + www.error);
         }
 
         Dictionary<string, object> responseData = MiniJSON.jsonDecode(www.text.Trim()) as Dictionary<string, object>;
-        Debug.LogWarning("[RESPONSE][DATA]\n" + responseData);
+        Debug.Log("[RESPONSE][DATA]\n" + responseData);
 
         string login_result = responseData["login_result"] as string;
-        Debug.Log("[RESPONSE][login_result]" + login_result);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][login_result]" + login_result);
 
         _infoText.text = login_result;
 
@@ -113,7 +113,7 @@ public class CMemManager : _MonoBehaviour
 
     public void OnLoginButtonClick()
     {
-        Debug.Log(this.GetMethodName());
+        //Debug.Log(this.GetMethodName());
         //StartCoroutine(GetNetCoroutine());
         //StartCoroutine(PostNetCoroutine());
         StartCoroutine(LoginCoroutine());
@@ -121,7 +121,7 @@ public class CMemManager : _MonoBehaviour
 
     private IEnumerator LoginCoroutine()
     {
-        string url = "http://localhost/12/account/select.php";
+        string url = "http://localhost/12/.account/select.php";
 
         WWWForm form = new WWWForm();
         form.AddField("id", _idInputField.text.Trim());
@@ -134,20 +134,20 @@ public class CMemManager : _MonoBehaviour
 
         if (www.error == null)
         {
-            Debug.Log("[RESPONSE][DATA]\n" + www.text);
+            Debug.LogWarning(this.GetMethodName() + "[RESPONSE][DATA]\n" + www.text);
         }
         else
         {
-            Debug.Log("[ERROR][MSG]\n" + www.error);
+            Debug.LogWarning("[ERROR][MSG]\n" + www.error);
         }
 
         Dictionary<string, object> responseData = MiniJSON.jsonDecode(www.text.Trim()) as Dictionary<string, object>;
-        Debug.LogWarning("[RESPONSE][DATA]\n" + responseData);
+        Debug.Log("[RESPONSE][DATA]\n" + responseData);
 
         string result_code = responseData["result_code"] as string;
-        Debug.Log("[RESPONSE][result_code]" + responseData["result_code"]);
-        Debug.Log("[RESPONSE][error_code]" + responseData["error_code"]);
-        Debug.Log("[RESPONSE][error_messge]" + responseData["error_messge"]);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][result_code]" + responseData["result_code"]);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][error_code]" + responseData["error_code"]);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][error_messge]" + responseData["error_messge"]);
 
         _infoText.text = result_code;
 
@@ -172,13 +172,13 @@ public class CMemManager : _MonoBehaviour
 
     public void OnJoinButtonClick()
     {
-        Debug.Log(this.GetMethodName());
+        //Debug.Log(this.GetMethodName());
         StartCoroutine(JoinNetCoroutine());
     }
 
     private IEnumerator JoinNetCoroutine()
     {
-        string url = "http://localhost/12/account/insert.php";
+        string url = "http://localhost/12/.account/insert.php";
 
         WWWForm form = new WWWForm();
         form.AddField("id", _idInputField.text.Trim());
@@ -191,20 +191,20 @@ public class CMemManager : _MonoBehaviour
 
         if (www.error == null)
         {
-            Debug.Log("[RESPONSE][DATA]\n" + www.text);
+            Debug.LogWarning(this.GetMethodName() + "[RESPONSE][DATA]\n" + www.text);
         }
         else
         {
-            Debug.Log("[ERROR][MSG]\n" + www.error);
+            Debug.LogWarning("[ERROR][MSG]\n" + www.error);
         }
 
         Dictionary<string, object> responseData = MiniJSON.jsonDecode(www.text.Trim()) as Dictionary<string, object>;
-        Debug.LogWarning("[RESPONSE][DATA]\n" + responseData);
+        Debug.Log("[RESPONSE][DATA]\n" + responseData);
 
         string result_code = responseData["result_code"] as string;
-        Debug.Log("[RESPONSE][result_code]" + responseData["result_code"]);
-        Debug.Log("[RESPONSE][error_code]" + responseData["error_code"]);
-        Debug.Log("[RESPONSE][error_messge]" + responseData["error_messge"]);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][result_code]" + responseData["result_code"]);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][error_code]" + responseData["error_code"]);
+        Debug.Log(this.GetMethodName() + "[RESPONSE][error_messge]" + responseData["error_messge"]);
 
         _infoText.text = result_code;
 
