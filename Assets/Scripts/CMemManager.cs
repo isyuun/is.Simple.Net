@@ -121,7 +121,8 @@ public class CMemManager : _MonoBehaviour
 
     private IEnumerator LoginCoroutine()
     {
-        string url = "http://localhost/12/.account/select.php";
+        //string url = "http://localhost/12/.account/select.php";
+        string url = "http://13.124.104.81/12php/account/selectwhere.php";
 
         WWWForm form = new WWWForm();
         form.AddField("id", _idInputField.text.Trim());
@@ -178,7 +179,8 @@ public class CMemManager : _MonoBehaviour
 
     private IEnumerator JoinNetCoroutine()
     {
-        string url = "http://localhost/12/.account/insert.php";
+        //string url = "http://localhost/12/.account/insert.php";
+        string url = "http://13.124.104.81/12php/account/insert.php";
 
         WWWForm form = new WWWForm();
         form.AddField("id", _idInputField.text.Trim());

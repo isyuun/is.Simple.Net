@@ -67,7 +67,8 @@ public class CGameManager : _MonoBehaviour
         int total_click_count = PlayerPrefs.GetInt("TOTAL_CLICK_COUNT");
         total_click_count += int.Parse(_countText.text);
 
-        string url = "http://localhost/12/.account/update.php";
+        //string url = "http://localhost/12/.account/update.php";
+        string url = "http://13.124.104.81/12php/account/update.php";
 
         WWWForm form = new WWWForm();
         form.AddField("id", _idText.text.Trim());
